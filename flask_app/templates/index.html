@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Главная</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Verdana', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1e1e2f;
+            color: #e0e0e0;
+        }
+
+        .card {
+            width: 360px;
+            background: #2b2b3d;
+            padding: 30px 24px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 18px;
+            font-size: 26px;
+            color: #ffdd57;
+        }
+
+        p.lead {
+            margin: 0 0 22px;
+            color: #aaa;
+            font-size: 15px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn.primary {
+            background: #ff8c42;
+            color: #1e1e2f;
+        }
+
+        .btn.primary:hover {
+            background: #ffa85c;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: #ff8c42;
+            border: 2px solid #ff8c42;
+        }
+
+        .btn.secondary:hover {
+            background: #ff8c42;
+            color: #1e1e2f;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Добро пожаловать!</h1>
+    <p class="lead">Создайте аккаунт или войдите в существующий профиль</p>
+
+    <a href="{{ url_for('register') }}"><button class="btn primary">Регистрация</button></a>
+    <a href="{{ url_for('login') }}"><button class="btn secondary">Вход</button></a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            height: 100vh;
+            background: #1e1e2f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .card {
+            width: 360px;
+            background: #2b2b3d;
+            padding: 28px 24px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 26px;
+            color: #ffdd57;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0 14px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            font-size: 15px;
+            background: #1e1e2f;
+            color: #e0e0e0;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff8c42;
+            color: #1e1e2f;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #ffa85c;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 14px;
+            color: #ff8c42;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            color: #ffa85c;
+            text-decoration: underline;
+        }
+
+        .error {
+            color: #ff4c4c;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Вход</h2>
+
+    <form method="POST">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <input type="text" name="username" placeholder="Имя пользователя" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+
+        <button class="btn">Войти</button>
+    </form>
+
+    <a href="{{ url_for('register') }}">Нет аккаунта? Зарегистрироваться</a>
+</div>
+
+</body>
+</html>

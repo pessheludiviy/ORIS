@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Verdana', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1e1e2f;
+            color: #e0e0e0;
+        }
+
+        .card {
+            width: 380px;
+            background: #2b2b3d;
+            padding: 28px 24px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 24px;
+            color: #ffdd57;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            color: #1e1e2f;
+        }
+
+        .btn-delete {
+            background: #ff4f4f;
+        }
+
+        .btn-delete:hover {
+            background: #ff7878;
+        }
+
+        .btn-footer {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #ff8c42;
+            color: #1e1e2f;
+        }
+
+        .btn-footer:hover {
+            background: #ffa85c;
+        }
+
+        p.message {
+            color: #a0ff72;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        p.empty {
+            color: #aaa;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Корзина</h2>
+
+    {% if mess %}
+        <p class="message">{{ mess }}</p>
+    {% endif %}
+
+    {% if items %}
+        {% for product, tamount in items %}
+            <div class="item">
+                <span>{{ product.name }} — {{ tamount }} шт.</span>
+                <a class="btn btn-delete" href="{{ url_for('remove', product_id=product.id) }}">Удалить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty">Корзина пуста</p>
+    {% endif %}
+
+    <a href="{{ url_for('products') }}"><button class="btn-footer">Обратно в магазин</button></a>
+    <a href="{{ url_for('checkout') }}"><button class="btn-footer">Оформить заказ</button></a>
+</div>
+
+</body>
+</html>

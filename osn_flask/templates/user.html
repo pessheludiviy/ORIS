@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .profile {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 12px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile">
+        <h1>Профиль пользователя</h1>
+        {% if name %}
+            <div class="username">{{ name.capitalize() }}</div>
+        {% else %}
+            <div class="username">Гость</div>
+        {% endif %}
+        <p>Добро пожаловать!</p>
+        <p><a href="{{ url_for('index') }}">Главная</a></p>
+    </div>
+</body>
+</html>

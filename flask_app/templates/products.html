@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Товары</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            height: 100vh;
+            background: #1e1e2f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .container {
+            width: 420px;
+            background: #2b2b3d;
+            padding: 28px 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 26px;
+            color: #ffdd57;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .product:last-child {
+            border-bottom: none;
+        }
+
+        .btn-add {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 8px;
+            background: #ff8c42;
+            color: #1e1e2f;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-add:hover {
+            background: #ffa85c;
+        }
+
+        .footer-link {
+            display: block;
+            text-align: center;
+            margin-top: 22px;
+            text-decoration: none;
+            color: #ff8c42;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #ffa85c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Товары</h2>
+
+    {% for p in items %}
+        <div class="product">
+            <span>{{ p.name }} — {{ p.price }}₽</span>
+            <a class="btn-add" href="{{ url_for('add_to_cart', product_id=p.id) }}">Добавить</a>
+        </div>
+    {% endfor %}
+
+    <a class="footer-link" href="{{ url_for('cart') }}">Перейти в корзину</a>
+
+</div>
+
+</body>
+</html>
